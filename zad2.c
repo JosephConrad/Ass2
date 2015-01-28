@@ -2,15 +2,8 @@
 #include "zad2.h"
 
 
-float distance (float kx, float ky, float kz, float r, float x, float y) {
-    float k = (kx-x)*(kx-x) + (ky-y)*(ky-y);
-    return kz - sqrtf(r*r - k);
-}
-
-
-float ifCut (float kx, float ky, float r, float x, float y) {
-    return (kx-x)*(kx-x) + (ky-y)*(ky-y) <= r*r;
-}
+float ifCut (float kx, float ky, float r, float x, float y);
+float distance (float kx, float ky, float kz, float r, float x, float y);
 
 
 void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul) {
@@ -39,4 +32,14 @@ void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul) 
             }
         }
     }
+}
+
+float distance (float kx, float ky, float kz, float r, float x, float y) {
+    float k = (kx-x)*(kx-x) + (ky-y)*(ky-y);
+    return kz - sqrtf(r*r - k);
+}
+
+
+float ifCut (float kx, float ky, float r, float x, float y) {
+    return (kx-x)*(kx-x) + (ky-y)*(ky-y) <= r*r;
 }
