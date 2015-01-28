@@ -7,11 +7,11 @@ typedef struct {
 } Pixel;
 
 typedef struct {
-	float x;
-	float y;
-	float z;
-	float r;
-	Pixel kolor;
+    float x;
+    float y;
+    float z;
+    float r;
+    Pixel kolor;
 } Kula_t;
 
 #endif
