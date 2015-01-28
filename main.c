@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "zad2.c"
+// #include "zad2.c"
 #include "zad2.h"
 
-
-
+extern void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul);
+  
 int main() {
     printf("\nSecond assignment - Assebler\n\n");
 
@@ -33,7 +33,6 @@ int main() {
 
     int x;
     int y;
-    int i;
     for (y = 0; y < wys; y++) {
         for (x = 0; x < szer; x++) {
             obraz[y + wys * x] = bialy;
