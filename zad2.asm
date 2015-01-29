@@ -100,6 +100,52 @@ KULE_LOOP:
 
     mov [globalCut], byte 1
 
+; ===============================================================================
+;                  calculating distance
+; ===============================================================================
+    
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm0, [rcx]
+
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm1, [rcx+4]
+
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm2, [rcx+8]
+
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm3, [rcx+12]
+
+    cvtsi2ss xmm4, [x]
+    cvtsi2ss xmm5, [y]
+
+    call distance
+
+    movss [dist], xmm0
+    movss xmm0, [dist]
+    movss xmm1, [best]
+    ucomiss xmm0, xmm1
+    jbe KULE_LOOP_FINISH
+
+    movss xmm0, [dist]
+    movss [best], xmm0
+    mov eax, [i]
+    mov [bestNo], eax
+
+
+
 KULE_LOOP_FINISH:
     mov eax, dword [i]
     add eax, 1
