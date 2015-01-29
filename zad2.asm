@@ -1,4 +1,5 @@
 %include "ifCut.asm"
+%include "distance.asm"
 
 DEFAULT REL
 
@@ -25,7 +26,6 @@ section .bss
 ;; We start our program with the start procedure
 section .text
     global sztokfisz                  ; musi  byc zadeklarowny dla linkera (gcc)
-    global distance 
 
 
 sztokfisz:
@@ -140,15 +140,6 @@ WYS_LOOP_FINISH:
     jmp WYS_LOOP
 
 AFTER_WYS_LOOP:
-
-    leave 
-    ret
-
-
-
-distance:
-    enter 0,0
-    sub rsp, 64
 
     leave 
     ret
