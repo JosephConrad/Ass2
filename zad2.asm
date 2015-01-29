@@ -136,13 +136,25 @@ KULE_LOOP:
     movss [dist], xmm0
     movss xmm0, [dist]
     movss xmm1, [best]
-    ucomiss xmm0, xmm1
+    cmpless xmm0, xmm1
     jbe KULE_LOOP_FINISH
+
+    ;cmpless xmm0, xmm1
+    ;cvtss2si eax, xmm0
+    ;cmp eax, 0
+    ;jne KULE_LOOP_FINISH
 
     movss xmm0, [dist]
     movss [best], xmm0
-    mov eax, [i]
-    mov [bestNo], eax
+    mov eax, dword [i]
+
+    mov dword [bestNo], eax
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm1, [rcx+8]
+DISTANCE:
 
 
 
@@ -165,7 +177,7 @@ AFTER_KULE_LOOP:
     mov ecx, dword [x]
     imul ecx, [wys]
     add eax, ecx
-    movsxd r10, eax
+    movsxd r10, eax 
 
     mov rax, qword [obraz]
     movsxd rcx, dword [bestNo]

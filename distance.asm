@@ -11,7 +11,7 @@ distance:
     movss [rbp-12], xmm2
     movss [rbp-16], xmm3
     movss [rbp-20], xmm4
-    movss [rbp-24], xmm4
+    movss [rbp-24], xmm5
     movss xmm0, [rbp-4]
     subss xmm0, [rbp-20]
     movss xmm1, [rbp-4]
@@ -31,9 +31,9 @@ distance:
     mulss xmm1, [rbp-16]
     subss xmm1, [rbp-28]
 
-    sqrtss xmm1, xmm1
+    sqrtss xmm2, xmm1
 
-    subss xmm0, xmm1
+    subss xmm0, xmm2
 
     leave 
     ret
