@@ -57,13 +57,19 @@ SZER_LOOP:
     cmp eax, 0
     je SZER_LOOP_FINISH
 
+    mov eax, dword [y]
+    mov ecx, dword [x]
+    imul ecx, [wys]
+    add eax, ecx
+    movsxd r10, eax
+
     mov rax, qword [obraz]
     movsxd rcx, dword [bestNo]
     mov rdx, qword [kule]
     imul rcx, 20
     add rdx, rcx
     mov esi, [rdx+16]
-    mov [rax], esi
+    mov [rax+r10*4], esi
 
 SZER_LOOP_FINISH:
     mov eax, dword [x]
