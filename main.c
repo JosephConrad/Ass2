@@ -14,10 +14,10 @@ int main() {
     int liczbaKul = 2;
 
     Pixel p = { .red = 255, .green = 0, .blue = 0, .nazwa = 'r'};
-    Kula_t kula = { .x = 6, .y = 3, .z = 13, .r = 3, .kolor = p};
+    Kula_t kula = { .x = 6, .y = 3, .z = 13, .r = 5, .kolor = p};
 
     Pixel p2 = { .red = 0, .green = 255, .blue = 0, .nazwa = 'g'};
-    Kula_t kula2 = { .x = 13, .y = 10, .z = 10, .r = 7, .kolor = p2};
+    Kula_t kula2 = { .x = 13, .y = 10, .z = 10, .r = 7  , .kolor = p2};
 
 
     Pixel bialy = { .red = 0, .green = 0, .blue = 0, .nazwa = '.'};

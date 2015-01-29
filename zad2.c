@@ -18,8 +18,16 @@ void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul) 
             globalCut = 0;
             for (i = 0; i < liczbaKul; i++) {
                 cut = ifCut(kule[i].x, kule[i].y, kule[i].r, x, y);
+                if (cut) {
+                    globalCut = 1;
+                    dist = distance(kule[i].x, kule[i].y, kule[i].z, kule[i].r, x, y); 
+                    if (dist < best) {
+                        best = dist;
+                        bestNo = i;
+                    }
+                }
             }
-            if (cut) {
+            if (globalCut) {
                 obraz[y + wys * x] = kule[bestNo].kolor;
             }
         }
@@ -33,11 +41,5 @@ float distance (float kx, float ky, float kz, float r, float x, float y) {
 
 
 int ifCut (float kx, float ky, float r, float x, float y) {
-    int i = 0;
-    if ((kx-x)*(kx-x) + (ky-y)*(ky-y)  <= r*r) {
-        i = 1;
-    } else {
-        i = 0;
-    }
-    return i;
+    return (kx-x)*(kx-x) + (ky-y)*(ky-y) <= r*r;
 }

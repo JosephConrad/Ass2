@@ -53,12 +53,12 @@ SZER_LOOP:
     mov dword [best], 1000000
     movups xmm0, [bestNo]           ; w xmm0 mam best
     mov dword [bestNo], 0
-    mov dword [globalCut], 1
-    mov eax, dword [globalCut]
+    mov dword [globalCut], 0
     cmp eax, 0
     je SZER_LOOP_FINISH
 
     mov dword [i], 0
+
 KULE_LOOP:
     mov eax, dword [i]
     cmp eax, [liczbaKul]
@@ -93,8 +93,14 @@ KULE_LOOP:
     cvtsi2ss xmm4, [y]
 
     call ifCut
-    mov [cut], eax
 
+    mov [cut], eax
+    cmp eax, 0
+    je KULE_LOOP_FINISH
+
+    mov [globalCut], byte 1
+
+KULE_LOOP_FINISH:
     mov eax, dword [i]
     add eax, 1
     mov dword [i], eax
@@ -105,7 +111,7 @@ AFTER_KULE_LOOP:
 ; ===============================================================================
 ;                  updating array
 ; ===============================================================================
-    mov eax, [cut]
+    mov eax, [globalCut]
     cmp eax, 0
     je SZER_LOOP_FINISH
 
