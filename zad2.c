@@ -2,7 +2,7 @@
 #include "zad2.h"
 
 
-float ifCut (float kx, float ky, float r, float x, float y);
+int ifCut (float kx, float ky, float r, float x, float y);
 float distance (float kx, float ky, float kz, float r, float x, float y);
 
 
@@ -19,7 +19,7 @@ void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul) 
             for (i = 0; i < liczbaKul; i++) {
                 cut = ifCut(kule[i].x, kule[i].y, kule[i].r, x, y);
             }
-            if (globalCut) {
+            if (cut) {
                 obraz[y + wys * x] = kule[bestNo].kolor;
             }
         }
@@ -32,6 +32,12 @@ float distance (float kx, float ky, float kz, float r, float x, float y) {
 }
 
 
-float ifCut (float kx, float ky, float r, float x, float y) {
-    return (kx-x)*(kx-x) + (ky-y)*(ky-y) <= r*r;
+int ifCut (float kx, float ky, float r, float x, float y) {
+    int i = 0;
+    if ((kx-x) <= r) {
+        i = 1;
+    } else {
+        i = 0;
+    }
+    return i;
 }

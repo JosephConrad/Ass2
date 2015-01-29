@@ -1,3 +1,5 @@
+%include "ifCut.asm"
+
 DEFAULT REL
 
     extern malloc
@@ -23,7 +25,6 @@ section .bss
 ;; We start our program with the start procedure
 section .text
     global sztokfisz                  ; musi  byc zadeklarowny dla linkera (gcc)
-    global ifCut
     global distance 
 
 
@@ -64,7 +65,35 @@ KULE_LOOP:
     jge AFTER_KULE_LOOP
 
 
+
+; ===============================================================================
+;                  calculating cut
+; ===============================================================================
     
+    
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm0, [rcx]
+
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm1, [rcx+4]
+
+    movsxd rax, [i]
+    mov rcx, [kule]
+    imul rax, 20
+    add rcx, rax
+    movss xmm2, [rcx+12]
+
+    cvtsi2ss xmm3, [x]
+    cvtsi2ss xmm4, [y]
+
+    call ifCut
+    mov [cut], eax
 
     mov eax, dword [i]
     add eax, 1
@@ -76,6 +105,9 @@ AFTER_KULE_LOOP:
 ; ===============================================================================
 ;                  updating array
 ; ===============================================================================
+    mov eax, [cut]
+    cmp eax, 0
+    je SZER_LOOP_FINISH
 
     mov eax, dword [y]
     mov ecx, dword [x]
@@ -112,12 +144,7 @@ AFTER_WYS_LOOP:
     leave 
     ret
 
-ifCut:
-    enter 0,0
-    sub rsp, 64
 
-    leave 
-    ret
 
 distance:
     enter 0,0
