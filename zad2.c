@@ -34,7 +34,7 @@ float distance (float kx, float ky, float kz, float r, float x, float y) {
 
 int ifCut (float kx, float ky, float r, float x, float y) {
     int i = 0;
-    if ((kx-x) <= r) {
+    if ((kx-x)*(kx-x) + (ky-y)*(ky-y)  <= r*r) {
         i = 1;
     } else {
         i = 0;
