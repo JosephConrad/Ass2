@@ -57,6 +57,26 @@ SZER_LOOP:
     cmp eax, 0
     je SZER_LOOP_FINISH
 
+    mov dword [i], 0
+KULE_LOOP:
+    mov eax, dword [i]
+    cmp eax, [liczbaKul]
+    jge AFTER_KULE_LOOP
+
+
+    
+
+    mov eax, dword [i]
+    add eax, 1
+    mov dword [i], eax
+    jmp KULE_LOOP
+
+
+AFTER_KULE_LOOP:
+; ===============================================================================
+;                  updating array
+; ===============================================================================
+
     mov eax, dword [y]
     mov ecx, dword [x]
     imul ecx, [wys]
