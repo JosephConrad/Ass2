@@ -15,20 +15,9 @@ void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul) 
         for (x = 0; x < szer; x++) { 
             bestNo = 0;
             best = 1000000.0;
-            globalCut = 0;
-            for (i = 0; i < liczbaKul; i++) {
-                cut = ifCut(kule[i].x, kule[i].y, kule[i].r, x, y);
-                if (cut) {
-                    globalCut = 1;
-                    dist = distance(kule[i].x, kule[i].y, kule[i].z, kule[i].r, x, y); 
-                    if (dist < best) {
-                        best = dist;
-                        bestNo = i;
-                    }
-                }
-            }
+            globalCut = 1;
             if (globalCut) {
-                obraz[y + wys * x] = kule[bestNo].kolor;
+                obraz[0] = kule[bestNo].kolor;
             }
         }
     }

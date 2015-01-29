@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// #include "zad2.c"
+//#include "zad2.c"
 #include "zad2.h"
 
 extern void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul);

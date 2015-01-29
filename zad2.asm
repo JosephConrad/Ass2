@@ -49,10 +49,21 @@ SZER_LOOP:
     cmp eax, [szer]
     jge AFTER_SZER_LOOP
 
-    
+    mov dword [best], 1000000
+    movups xmm0, [bestNo]           ; w xmm0 mam best
+    mov dword [bestNo], 0
+    mov dword [globalCut], 1
+    mov eax, dword [globalCut]
+    cmp eax, 0
+    je SZER_LOOP_FINISH
 
-
-
+    mov rax, qword [obraz]
+    movsxd rcx, dword [bestNo]
+    mov rdx, qword [kule]
+    imul rcx, 20
+    add rdx, rcx
+    mov esi, [rdx+16]
+    mov [rax], esi
 
 SZER_LOOP_FINISH:
     mov eax, dword [x]
