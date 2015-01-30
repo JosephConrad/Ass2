@@ -21,7 +21,3 @@ Parametry szer i wys podają rozmiar tablicy obraz. Ewentualnie można dodać je
 Po powrocie z procedury asemblerowej program główny powinien wyświetlić policzony obraz.
 
 Uwaga: nie wolno tworzyć obrazu metodą sortowania kul i rzutowania ich kolejno na płaszczyznę obrazu. Nie wolno korzystać z wątków itp., program ma być sekwencyjny.
-
-Rozwiązania nie zawierające pliku Makefile nie będą sprawdzane.
-
-Rozwiązania (program źródłowy i przykładowe pliki testowe z danymi) należy wysłać do dnia 17 grudnia (23:59) pocztą na zbyszek@mimuw.edu.pl jako pojedynczy załącznik -- archiwum o nazwie wskazującej na autora (np. ab123456-zad2.tgz), spakowane z osobnego katalogu o tej samej nazwie (ale bez tgz). Program ma działać w środowisku zainstalowanym w laboratoriach w trybie 64-bitowym.
