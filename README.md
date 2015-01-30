@@ -1,4 +1,5 @@
 Zadanie 2: Śledzenie promieni (Rays' following)
+=========
 
 Należy napisać (oczywiście w asemblerze) program na proste śledzenie promieni używając instrukcji z rodziny SSE. Śledzenia promieni używamy do wytworzenia obrazu płaskiego na podstawie opisu obiektów znajdujących się w przestrzeni trójwymiarowej.
 
