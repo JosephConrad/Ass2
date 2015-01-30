@@ -12,11 +12,13 @@ Przyjmujemy, że dla promienia i współrzędnych środka wystarczą liczby rzec
 Płaszczyzna obrazu wyznaczona jest równaniem
 
 z = 0.
+
 Śledzenie promieni (w najprostszym przypadku) polega na wystawieniu z każdego punktu obrazu normalnej i znalezieniu przecięcia z najbliższym obiektem. Kolor znalezionego punktu przecięcia (czyli w tym przypadku jego kuli) staje się kolorem piksela na obrazie.
 
 Program główny (napisany w C) powinien pobrać z pliku opis kul i przekazać go w jakiejś postaci procedurze w asemblerze wraz z pustą macierzą pikseli. Sygnatura procedury w asemblerze może więc być następująca
 
   void sztokfisz (kula_t *kule, pixel obraz[][], int szer, int wys);
+
 Parametry szer i wys podają rozmiar tablicy obraz. Ewentualnie można dodać jeszcze parametr na liczbę kul.
 Po powrocie z procedury asemblerowej program główny powinien wyświetlić policzony obraz.
 
