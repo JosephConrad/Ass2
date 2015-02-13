@@ -50,8 +50,10 @@ SZER_LOOP:
     cmp eax, [szer]
     jge AFTER_SZER_LOOP
 
-    mov dword [best], 1000000
-    movups xmm0, [bestNo]           ; w xmm0 mam best
+    mov rax, 10000000           
+    cvtsi2ss xmm10, rax             ; keep the best result in xmm10
+
+    movups xmm0, [bestNo]          
     mov dword [bestNo], 0
     mov dword [globalCut], 0
     cmp eax, 0
@@ -133,29 +135,22 @@ KULE_LOOP:
 
     call distance
 
-    movss [dist], xmm0
+    movss [dist], xmm0 
     movss xmm0, [dist]
-    movss xmm1, [best]
-    cmpless xmm0, xmm1
-    jbe KULE_LOOP_FINISH
+    movss xmm1, xmm10
 
-    ;cmpless xmm0, xmm1
-    ;cvtss2si eax, xmm0
-    ;cmp eax, 0
-    ;jne KULE_LOOP_FINISH
+    cmpltpd xmm0,xmm1
+    movmskpd eax,xmm0
+    cmp eax,0
+    je KULE_LOOP_FINISH 
 
+    xorps xmm0, xmm0
     movss xmm0, [dist]
-    movss [best], xmm0
+    movss xmm10, xmm0
+
     mov eax, dword [i]
-
     mov dword [bestNo], eax
-    movsxd rax, [i]
-    mov rcx, [kule]
-    imul rax, 20
-    add rcx, rax
-    movss xmm1, [rcx+8]
-DISTANCE:
-
+ 
 
 
 KULE_LOOP_FINISH:

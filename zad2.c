@@ -1,5 +1,6 @@
 #include <math.h>
 #include "zad2.h"
+#include <stdio.h>
 
 
 int ifCut (float kx, float ky, float r, float x, float y);
@@ -20,7 +21,7 @@ void sztokfisz (Kula_t * kule, Pixel * obraz, int szer, int wys, int liczbaKul) 
                 cut = ifCut(kule[i].x, kule[i].y, kule[i].r, x, y);
                 if (cut) {
                     globalCut = 1;
-                    dist = distance(kule[i].x, kule[i].y, kule[i].z, kule[i].r, x, y); 
+                    dist = distance(kule[i].x, kule[i].y, kule[i].z, kule[i].r, x, y);
                     if (dist < best) {
                         best = dist;
                         bestNo = i;

@@ -10,7 +10,7 @@ int main ( int argc, char *argv[] ) {
     printf("\nSecond assignment - Assebler\n\n");
 
     if ( argc != 2 ) { 
-        printf( "usage: %s filename", argv[0] );
+        printf( "usage: %s filename\n\n", argv[0] );
         return 0;
     }
     
@@ -42,7 +42,7 @@ int main ( int argc, char *argv[] ) {
         fscanf(file, "%d", &radius);
 
         Pixel p = { .red = r, .green = g, .blue = b, .nazwa = name};
-        Kula_t kula = { .x = x, .y = y, .z = x, .r = radius , .kolor = p};
+        Kula_t kula = { .x = x, .y = y, .z = z, .r = radius , .kolor = p};
         kule[i] = kula;
     }
 
